@@ -1,0 +1,25 @@
+{
+  "name": "show-frontend",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@vant/area-data": "^1.4.1",
+    "axios": "^1.4.0",
+    "mockjs": "^1.1.0",
+    "pinia": "^2.1.1",
+    "pinia-plugin-persistedstate": "^3.1.0",
+    "vant": "^4.2.0",
+    "vue": "^3.2.47",
+    "vue-router": "^4.1.6"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.1.0",
+    "vite": "^4.2.0"
+  }
+}
