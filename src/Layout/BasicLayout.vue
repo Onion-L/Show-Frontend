@@ -16,9 +16,9 @@
         <router-view/>
       </div>
       <van-tabbar v-model="active" route>
-        <van-tabbar-item name="home" icon="home-o" to="/basic/home">主页</van-tabbar-item>
-        <van-tabbar-item name="team" icon="search" to="/basic/team">组队</van-tabbar-item>
-        <van-tabbar-item name="person" icon="friends-o" to="/basic/person">个人</van-tabbar-item>
+        <van-tabbar-item name="home" icon="home-o" to="/home">主页</van-tabbar-item>
+        <van-tabbar-item name="team" icon="search" to="/team">组队</van-tabbar-item>
+        <van-tabbar-item name="person" icon="friends-o" to="/person">个人</van-tabbar-item>
       </van-tabbar>
     </div>
 </template>

@@ -49,7 +49,7 @@ const onSubmit = (values) => {
       .then((response)=>{
         console.log('数据成功传输~~~',typeof values)
         console.log(response.data);
-        router.replace('/basic/home');
+        router.replace('/home');
         //     .then(()=>{
         //     })
       })

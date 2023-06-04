@@ -81,8 +81,6 @@ const onClickLeft = () =>{
   router.back();
 }
 
-
-
 const onConfirm = ({ selectedOptions }) => {
   showArea.value = false;
   result.value = selectedOptions.map((item) => item.text).join('/');
@@ -97,8 +95,6 @@ const onSubmit = (values) => {
       .catch(error => {
         console.error('register',error.message);
       })
-
-  console.log('@@')
 };
 
 </script>
