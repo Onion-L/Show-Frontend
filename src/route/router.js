@@ -13,23 +13,11 @@ import TeamInfo from "../pages/TeamInfo/TeamInfo.vue";
 
 
 const routes = [
+
     {
         path:'/',
-        component: LoginPage,
-        redirect: '/login'
-    },
-    {
-        path:'/login',
-        component: LoginPage
-    },
-    {
-        path:'/register',
-        component: RegisterPage
-    },
-    {
-        path:'/basic',
         component:BasicLayout,
-        redirect:'/basic/home',
+        redirect:'/home',
         children:[
             {
                 path:'home',
@@ -44,7 +32,14 @@ const routes = [
             },
         ]
     },
-
+    {
+        path:'/login',
+        component: LoginPage
+    },
+    {
+        path:'/register',
+        component: RegisterPage
+    },
     {
         path:'/search',
         component: SearchPage

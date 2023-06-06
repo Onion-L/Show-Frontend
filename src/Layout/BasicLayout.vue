@@ -16,26 +16,29 @@
         <router-view/>
       </div>
       <van-tabbar v-model="active" route>
-        <van-tabbar-item name="home" icon="home-o" to="/basic/home">主页</van-tabbar-item>
-        <van-tabbar-item name="team" icon="search" to="/basic/team">组队</van-tabbar-item>
-        <van-tabbar-item name="person" icon="friends-o" to="/basic/person">个人</van-tabbar-item>
+        <van-tabbar-item name="home" icon="home-o" to="/home">主页</van-tabbar-item>
+        <van-tabbar-item name="team" icon="search" to="/team">组队</van-tabbar-item>
+        <van-tabbar-item name="person" icon="friends-o" to="/person">个人</van-tabbar-item>
       </van-tabbar>
     </div>
 </template>
 <script setup>
 import { ref } from 'vue';
-import { useRouter, useRoute } from 'vue-router';
+import { useRouter} from 'vue-router';
+import {userStore} from "../store/modules/userStore.js";
 
   const active = ref('home');
-
   const router = useRouter();
 
-  // const onChange = ()=>{
-  //   showToast(`标签：${active.value}`);
-  // }
+  // const store = userStore();
+
   const onClickRight = () =>{
     router.push('/search');
   }
+
+
+
+
 </script>
 <style scoped>
 .container {
@@ -48,7 +51,7 @@ import { useRouter, useRoute } from 'vue-router';
 }
 
 .nav-title{
-  font-family: 'Pacifico';
+  font-family: 'Pacifico',sans-serif;
   color: #1989FA;
 }
 

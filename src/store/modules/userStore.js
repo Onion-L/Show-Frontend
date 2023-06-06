@@ -4,7 +4,7 @@ import axios from "axios";
 export const userStore = defineStore('user',{
     state:()=>{
         return {
-            userList:{}
+            userList:{},
         }
     },
     actions:{

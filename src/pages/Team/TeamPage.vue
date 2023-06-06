@@ -11,11 +11,11 @@
       <van-button size="mini">联系我们</van-button>
     </template>
   </van-card>
+  <van-button class="add-btn" icon="plus" type="primary" size="normal"/>
 </template>
 
 <script setup>
 import {onMounted, ref} from "vue";
-import axios from 'axios';
 import {teamStore} from "../../store/modules/teamStore.js";
 import {useRouter} from "vue-router";
 
@@ -41,7 +41,12 @@ const handleOnClick = (index)=>{
 </script>
 
 <style scoped>
-*{
-  background-color: #fff;
+.add-btn {
+  position:fixed;
+  bottom: 15vh;
+  right:5vw;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
 }
 </style>
