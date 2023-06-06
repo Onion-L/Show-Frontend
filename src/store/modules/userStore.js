@@ -5,7 +5,6 @@ export const userStore = defineStore('user',{
     state:()=>{
         return {
             userList:{},
-            isLogin:false
         }
     },
     actions:{
