@@ -24,18 +24,21 @@
 </template>
 <script setup>
 import { ref } from 'vue';
-import { useRouter, useRoute } from 'vue-router';
+import { useRouter} from 'vue-router';
+import {userStore} from "../store/modules/userStore.js";
 
   const active = ref('home');
-
   const router = useRouter();
 
-  // const onChange = ()=>{
-  //   showToast(`标签：${active.value}`);
-  // }
+  // const store = userStore();
+
   const onClickRight = () =>{
     router.push('/search');
   }
+
+
+
+
 </script>
 <style scoped>
 .container {
@@ -48,7 +51,7 @@ import { useRouter, useRoute } from 'vue-router';
 }
 
 .nav-title{
-  font-family: 'Pacifico';
+  font-family: 'Pacifico',sans-serif;
   color: #1989FA;
 }
 
