@@ -7,6 +7,11 @@
   <van-cell title="头像" size="larger" is-link to="info/edit">
     <img style="height: 48px;" :src="user.avatarUrl">
   </van-cell>
+<!--  <van-field name="avatarUrl" label="修改头像" :max-count="1" @change="onChange">
+    <template #input>
+      <van-uploader v-model="avatarUrl" />
+    </template>
+  </van-field>-->
   <van-cell title="昵称" size="larger" is-link to="info/edit" :value="user.username" @click="toEdit('昵称','username',user.username)"/>
   <van-cell title="账号" size="larger" :value="user.userAccount" />
   <van-cell title="性别" size="larger" is-link to="info/edit" :value="user.gender" @click="toEdit('性别','gender',user.gender)"/>
@@ -25,11 +30,13 @@ const router = useRouter();
 
 const store = userStore();
 const user = ref({});
+const avatarUrl = ref();
 
 onMounted(async ()=>{
-  await store.fetchUser();
-  user.value = store.userList;
+  // await store.fetchUser();
+  // user.value = store.userList;
 })
+
 
 const onClickLeft = () => {
   router.back();

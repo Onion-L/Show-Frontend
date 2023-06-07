@@ -20,6 +20,7 @@
 <script setup>
   import {useRouter} from "vue-router";
   import {showSuccessToast, showToast, Toast} from 'vant';
+  import axios from 'axios';
 
   const router = useRouter();
   const onClickLeft = ()=>{
@@ -27,7 +28,11 @@
   }
 
   const handleLogout = () => {
-    showSuccessToast('退出登录成功');
+    axios.get('/api/logout').then((response)=>{
+      console.log(response.data);
+      showSuccessToast('退出登录成功');
+      router.replace('/login');
+    })
   }
 
 </script>
