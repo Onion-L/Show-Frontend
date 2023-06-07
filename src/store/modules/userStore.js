@@ -9,9 +9,9 @@ export const userStore = defineStore('user',{
         }
     },
     actions:{
-        async fetchUser() {
+        async fetchUser(username) {
             try {
-                const response = await axios.get('/api/user');
+                const response = await axios.get('/api/user',username);
                 this.userList = response.data;
             }catch (err) {
                 console.error(err);

@@ -45,7 +45,9 @@ onMounted(()=>{
     console.log(response);
   })
   if(cookie) {
-    store.cookie = cookie;
+    localStorage.setItem('log_in_username',cookie.slice(9));
+    console.log(localStorage.getItem('log_in_username'))
+    // store.fetchUser(cookie.username);
   }else {
     setTimeout(()=>{
       router.push('/login');

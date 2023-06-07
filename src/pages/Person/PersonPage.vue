@@ -19,10 +19,12 @@ import {userStore} from "../../store/modules/userStore.js";
 
 const store = userStore();
 const user = ref({});
+const username = localStorage.getItem('log_in_username');
 
 
 onMounted(async ()=>{
-  await store.fetchUser();
+  console.log('person',username);
+  await store.fetchUser(username);
   user.value = store.userList;
 })
 

@@ -45,6 +45,7 @@ const router = useRouter();
 
 const onSubmit = (values) => {
   console.log('submit', values);
+
   axios.post('/api/login',values)
       .then((response)=>{
         console.log('数据成功传输~~~',typeof values)
@@ -52,8 +53,7 @@ const onSubmit = (values) => {
         router.replace({
           path:'/home',
           query:{token:response.data}
-        })
-            .then(() => {
+        }).then(() => {
               showSuccessToast('登录成功');
             })
       })
@@ -61,7 +61,6 @@ const onSubmit = (values) => {
         // console.log('ERROR',e.message)
         showFailToast('用户名/密码错误');
       })
-  // router.replace('/');
 };
 
 const onRegister = () => {
