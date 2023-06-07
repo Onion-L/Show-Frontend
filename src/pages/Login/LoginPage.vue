@@ -48,10 +48,11 @@ const onSubmit = (values) => {
   axios.post('/api/login',values)
       .then((response)=>{
         console.log('数据成功传输~~~',typeof values)
-        console.log(response.data);
-        router.replace('/home');
-        //     .then(()=>{
-        //     })
+        console.log('login',response.data);
+        router.replace('/home')
+            .then(() => {
+              showSuccessToast('登录成功');
+            })
       })
       .catch(e => {
         // console.log('ERROR',e.message)

@@ -22,15 +22,26 @@
 </template>
 
 <script setup>
-import {onBeforeMount, ref} from "vue";
+import { onMounted, ref} from "vue";
 import {useRouter} from "vue-router";
+import {userStore} from "../../store/modules/userStore.js";
 
 const active = ref(0);
 const router = useRouter();
+const cookie = document.cookie;
+const store = userStore();
 
-/*onBeforeMount(()=> {
-  router.push('/login')
-})*/
+onMounted(()=>{
+  if(cookie) {
+    store.cookie = cookie;
+  }else {
+    setTimeout(()=>{
+      router.push('/login');
+    },5000);
+    console.log(cookie);
+  }
+})
+
 </script>
 
 <style scoped>

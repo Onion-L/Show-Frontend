@@ -7,6 +7,7 @@
       <van-icon name="cross" size="18"/>
     </template>
   </van-nav-bar>
+
   <van-form @submit="onSubmit">
     <van-cell-group inset>
       <van-field

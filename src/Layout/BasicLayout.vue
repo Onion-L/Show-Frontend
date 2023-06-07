@@ -25,12 +25,10 @@
 <script setup>
 import { ref } from 'vue';
 import { useRouter} from 'vue-router';
-import {userStore} from "../store/modules/userStore.js";
 
   const active = ref('home');
   const router = useRouter();
 
-  // const store = userStore();
 
   const onClickRight = () =>{
     router.push('/search');

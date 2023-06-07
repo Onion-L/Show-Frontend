@@ -5,6 +5,7 @@ export const userStore = defineStore('user',{
     state:()=>{
         return {
             userList:{},
+            cookie:''
         }
     },
     actions:{
