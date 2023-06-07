@@ -48,8 +48,11 @@ const onSubmit = (values) => {
   axios.post('/api/login',values)
       .then((response)=>{
         console.log('数据成功传输~~~',typeof values)
-        console.log('login',response.data);
-        router.replace('/home')
+        console.log(response.data);
+        router.replace({
+          path:'/home',
+          query:{token:response.data}
+        })
             .then(() => {
               showSuccessToast('登录成功');
             })

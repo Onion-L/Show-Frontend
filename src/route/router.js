@@ -10,6 +10,7 @@ import SettingPage from "../pages/Setting/SettingPage.vue"
 import LoginPage from "../pages/Login/LoginPage.vue";
 import RegisterPage from "../pages/Register/RegisterPage.vue";
 import TeamInfo from "../pages/TeamInfo/TeamInfo.vue";
+import ExceptionPage from "../pages/ExceptionPage/ExceptionPage.vue";
 
 
 const routes = [
@@ -60,7 +61,10 @@ const routes = [
     {
         path:'/teamInfo',
         component: TeamInfo
-    },
+    },{
+        path:'/error',
+        component:ExceptionPage
+    }
 ];
 const router = VueRouter.createRouter({
     // 内部提供了 history 模式的实现。为了简单起见，我们在这里使用 hash 模式。

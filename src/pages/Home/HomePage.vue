@@ -23,15 +23,27 @@
 
 <script setup>
 import { onMounted, ref} from "vue";
-import {useRouter} from "vue-router";
+import {useRoute, useRouter} from "vue-router";
 import {userStore} from "../../store/modules/userStore.js";
+import axios from "axios";
 
 const active = ref(0);
 const router = useRouter();
+const route = useRoute();
 const cookie = document.cookie;
 const store = userStore();
 
+const {token} = route.query;
+
 onMounted(()=>{
+  console.log(token);
+  axios.get('/api/home',{
+    headers: {
+      Authorization: 'Bearer ' + token
+    }
+      }).then(response => {
+    console.log(response);
+  })
   if(cookie) {
     store.cookie = cookie;
   }else {

@@ -10,7 +10,7 @@ export const tagStore = defineStore('tags',{
     actions:{
         async fetchTagList() {
             try {
-                const response = await axios.get('/tagList');
+                const response = await axios.get('/api/tagList');
                 this.tagList = response.data;
             }catch (err) {
                 console.error(err);

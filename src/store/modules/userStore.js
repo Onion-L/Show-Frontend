@@ -11,7 +11,7 @@ export const userStore = defineStore('user',{
     actions:{
         async fetchUser() {
             try {
-                const response = await axios.get('/user');
+                const response = await axios.get('/api/user');
                 this.userList = response.data;
             }catch (err) {
                 console.error(err);
