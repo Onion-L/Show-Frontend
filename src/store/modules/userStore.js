@@ -9,14 +9,18 @@ export const userStore = defineStore('user',{
         }
     },
     actions:{
-        async fetchUser(username) {
+        /*async fetchUser(username) {
             try {
-                const response = await axios.get('/api/user',username);
+                const response = await axios.get('/api/user',username,{
+                    headers: {
+                        Authorization: 'Bearer ' + token
+                    }
+                });
                 this.userList = response.data;
             }catch (err) {
                 console.error(err);
             }
-        }
+        }*/
     }
 })
 

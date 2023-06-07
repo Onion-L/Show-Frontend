@@ -37,11 +37,7 @@ const {token} = route.query;
 
 onMounted(()=>{
   console.log(token);
-  axios.get('/api/home',{
-    headers: {
-      Authorization: 'Bearer ' + token
-    }
-      }).then(response => {
+  axios.get('/api/home').then(response => {
     console.log(response);
   })
   if(cookie) {
@@ -49,10 +45,7 @@ onMounted(()=>{
     console.log(localStorage.getItem('log_in_username'))
     // store.fetchUser(cookie.username);
   }else {
-    setTimeout(()=>{
-      router.push('/login');
-    },5000);
-    console.log(cookie);
+    router.replace('/login');
   }
 })
 

@@ -44,16 +44,15 @@ const router = useRouter();
 
 
 const onSubmit = (values) => {
+  console.log(typeof values)
   console.log('submit', values);
 
   axios.post('/api/login',values)
       .then((response)=>{
         console.log('数据成功传输~~~',typeof values)
         console.log(response.data);
-        router.replace({
-          path:'/home',
-          query:{token:response.data}
-        }).then(() => {
+        localStorage.setItem('login_token',response.data);
+        router.replace('/home').then(() => {
               showSuccessToast('登录成功');
             })
       })

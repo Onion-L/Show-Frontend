@@ -16,15 +16,27 @@
 <script setup>
 import {onMounted, ref} from "vue";
 import {userStore} from "../../store/modules/userStore.js";
+import axios from "axios";
 
 const store = userStore();
 const user = ref({});
 const username = localStorage.getItem('log_in_username');
+const token = localStorage.getItem('login_token');
 
 
-onMounted(async ()=>{
+onMounted(()=>{
   console.log('person',username);
-  await store.fetchUser(username);
+  axios.get('/api/user',{
+    headers: {
+      Authorization: 'Bearer ' + token
+    }
+  }).then(response => {
+    console.log(response.data);
+    user.value = response.data;
+  }).catch(e => {
+    console.error(e)
+  })
+
   user.value = store.userList;
 })
 
