@@ -11,6 +11,7 @@ import LoginPage from "../pages/Login/LoginPage.vue";
 import RegisterPage from "../pages/Register/RegisterPage.vue";
 import TeamInfo from "../pages/TeamInfo/TeamInfo.vue";
 import ExceptionPage from "../pages/ExceptionPage/ExceptionPage.vue";
+import TeamAddPage from "../pages/Team/components/TeamAddPage.vue";
 
 
 const routes = [
@@ -22,7 +23,7 @@ const routes = [
         children:[
             {
                 path:'home',
-                component:HomePage
+                component:HomePage,
             },
             {
                 path:'person',
@@ -32,6 +33,10 @@ const routes = [
                 component:TeamPage
             },
         ]
+    },
+    {
+        path:'/team/addTeam',
+        component:TeamAddPage
     },
     {
         path:'/login',

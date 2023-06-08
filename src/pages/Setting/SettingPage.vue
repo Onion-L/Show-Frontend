@@ -19,7 +19,7 @@
 
 <script setup>
   import {useRouter} from "vue-router";
-  import {showSuccessToast, showToast, Toast} from 'vant';
+  import {showSuccessToast} from 'vant';
   import axios from 'axios';
 
   const router = useRouter();
@@ -30,6 +30,8 @@
   const handleLogout = () => {
     axios.get('/api/logout').then((response)=>{
       console.log(response.data);
+      localStorage.removeItem('log_in_username');
+      localStorage.removeItem('login_token');
       showSuccessToast('退出登录成功');
       router.replace('/login');
     })

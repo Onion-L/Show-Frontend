@@ -36,12 +36,11 @@ const store = userStore();
 const {token} = route.query;
 
 onMounted(()=>{
-  console.log(token);
   axios.get('/api/home').then(response => {
     console.log(response);
   })
   if(cookie) {
-    localStorage.setItem('log_in_username',cookie.slice(9));
+    localStorage.setItem('log_in_username',cookie.slice(15));
     console.log(localStorage.getItem('log_in_username'))
     // store.fetchUser(cookie.username);
   }else {

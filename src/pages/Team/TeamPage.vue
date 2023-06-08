@@ -1,17 +1,20 @@
 <template>
-  <van-card
-      v-for="(team,index) in teamList"
-      :key="index"
-      :desc="team.title"
-      :title="team.username"
-      :thumb="team.avatarUrl"
-      @click="handleOnClick(index)"
-  >
-    <template #footer>
-      <van-button size="mini">联系我们</van-button>
-    </template>
-  </van-card>
-  <van-button class="add-btn" icon="plus" type="primary" size="normal"/>
+  <template v-if="teamList.length > 0">
+    <van-card
+        v-for="(team,index) in teamList"
+        :key="index"
+        :desc="team.title"
+        :title="team.username"
+        :thumb="team.avatarUrl"
+        @click="handleOnClick(index)"
+    >
+      <template #footer>
+        <van-button size="mini">联系我们</van-button>
+      </template>
+    </van-card>
+  </template>
+  <van-empty v-else image="search" description="暂无数据" />
+  <van-button class="add-btn" icon="plus" type="primary" size="normal" @click="addTeam"/>
 </template>
 
 <script setup>
@@ -24,8 +27,8 @@ const store = teamStore();
 const router = useRouter();
 
 onMounted(async ()=>{
-  await store.fetchTeamList();
-  teamList.value = store.teamList;
+/*  await store.fetchTeamList();
+  teamList.value = store.teamList;*/
 })
 
 const handleOnClick = (index)=>{
@@ -37,6 +40,11 @@ const handleOnClick = (index)=>{
     }
   })
 }
+
+const addTeam = () => {
+  router.push('/team/addTeam');
+}
+
 
 </script>
 
