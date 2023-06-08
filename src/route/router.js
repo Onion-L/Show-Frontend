@@ -35,7 +35,7 @@ const routes = [
         ]
     },
     {
-        path:'/team/addTeam',
+        path:'/addTeam',
         component:TeamAddPage
     },
     {

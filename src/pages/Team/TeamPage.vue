@@ -42,7 +42,7 @@ const handleOnClick = (index)=>{
 }
 
 const addTeam = () => {
-  router.push('/team/addTeam');
+  router.push('/addTeam');
 }
 
 

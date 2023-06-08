@@ -29,13 +29,9 @@ import { useRouter} from 'vue-router';
   const active = ref('home');
   const router = useRouter();
 
-
   const onClickRight = () =>{
     router.push('/search');
   }
-
-
-
 
 </script>
 <style scoped>
