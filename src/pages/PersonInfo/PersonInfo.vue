@@ -30,7 +30,6 @@ const router = useRouter();
 
 const store = userStore();
 const user = ref({});
-const avatarUrl = ref();
 
 onMounted(async ()=>{
   // await store.fetchUser();
