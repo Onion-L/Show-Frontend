@@ -96,8 +96,8 @@ const onClickLeft = () => {
 }
 
 const onSubmit = (values) => {
-  const username = localStorage.getItem('log_in_username');
-  values.username = username;
+  values.username = localStorage.getItem('log_in_username');
+
 
   axios.post('/api/addTeam',values)
       .then((_) => {
