@@ -6,6 +6,7 @@
         :desc="team.description"
         :title="team.name"
         :thumb="team.avatarUrl"
+        style=" background-color: #fff; "
         @click="handleOnClick(index)"
     >
       <template #footer>
@@ -56,10 +57,6 @@ const addTeam = () => {
 </script>
 
 <style scoped>
-
-.van-card{
-  background-color: #fff;  
-}
 
 .add-btn {
   position:fixed;
