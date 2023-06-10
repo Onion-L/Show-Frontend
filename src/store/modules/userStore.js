@@ -4,8 +4,7 @@ import axios from "axios";
 export const userStore = defineStore('user',{
     state:()=>{
         return {
-            userList:{},
-            cookie:''
+            userList:{}
         }
     },
     actions:{

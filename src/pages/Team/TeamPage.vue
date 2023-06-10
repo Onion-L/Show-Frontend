@@ -3,8 +3,8 @@
     <van-card
         v-for="(team,index) in teamList"
         :key="index"
-        :desc="team.title"
-        :title="team.username"
+        :desc="team.description"
+        :title="team.name"
         :thumb="team.avatarUrl"
         @click="handleOnClick(index)"
     >
@@ -21,14 +21,21 @@
 import {onMounted, ref} from "vue";
 import {teamStore} from "../../store/modules/teamStore.js";
 import {useRouter} from "vue-router";
+import axios from "axios";
 
 const teamList = ref([]);
 const store = teamStore();
 const router = useRouter();
 
-onMounted(async ()=>{
+onMounted(()=>{
 /*  await store.fetchTeamList();
   teamList.value = store.teamList;*/
+  axios.get('/api/team')
+      .then(response => {
+        console.log(response.data);
+        store.teamList = response.data;
+        teamList.value = response.data;
+      })
 })
 
 const handleOnClick = (index)=>{
@@ -49,6 +56,11 @@ const addTeam = () => {
 </script>
 
 <style scoped>
+
+.van-card{
+  background-color: #fff;  
+}
+
 .add-btn {
   position:fixed;
   bottom: 15vh;
