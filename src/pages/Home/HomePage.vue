@@ -31,20 +31,16 @@ const active = ref(0);
 const router = useRouter();
 const route = useRoute();
 const cookie = document.cookie;
-const store = userStore();
 
-const {token} = route.query;
+// const {token} = route.query;
 
 onMounted(()=>{
-  axios.get('/api/home').then(response => {
+ /* axios.get('/api/home').then(response => {
     console.log(response);
-  })
+  })*/
   if(cookie) {
     localStorage.setItem('log_in_username',cookie.slice(15));
     console.log(localStorage.getItem('log_in_username'))
-    // store.fetchUser(cookie.username);
-  }else {
-    router.replace('/login');
   }
 })
 

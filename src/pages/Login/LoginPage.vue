@@ -3,6 +3,11 @@
      title="登录"
   />
   <h3 class="title">Welcome to your show~</h3>
+
+<!--  <img class="avatar" :src="avatarUrl"/>-->
+  <van-image :src="avatarUrl">
+    <template v-slot:default>加载失败</template>
+  </van-image>
   <van-form @submit="onSubmit" style="margin-top: 50px;">
     <van-cell-group inset>
       <van-field
@@ -33,15 +38,26 @@
 </template>
 
 <script setup>
-import {ref} from "vue";
-import {useRoute, useRouter} from "vue-router";
+import {onMounted, ref} from "vue";
+import {useRouter} from "vue-router";
 import axios from "axios";
 import {showFailToast, showSuccessToast} from "vant";
 
 const username = ref('');
 const password = ref('');
+const avatarUrl = ref('');
 const router = useRouter();
 
+onMounted(() => {
+  axios.get('/api/user')
+      .then(response => {
+        console.log(response.data)
+      })
+      .catch((_) => {
+        console.error('头像加载失败');
+      })
+
+})
 
 const onSubmit = (values) => {
   console.log(typeof values)
