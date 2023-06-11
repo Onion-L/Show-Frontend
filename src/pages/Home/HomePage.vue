@@ -30,17 +30,15 @@ import axios from "axios";
 const active = ref(0);
 const router = useRouter();
 const route = useRoute();
-const cookie = document.cookie;
+const sessionID = document.cookie.split('=')[1];
 
-// const {token} = route.query;
 
 onMounted(()=>{
  /* axios.get('/api/home').then(response => {
     console.log(response);
   })*/
-  if(cookie) {
-    localStorage.setItem('log_in_username',cookie.slice(15));
-    console.log(localStorage.getItem('log_in_username'))
+  if(sessionID) {
+    localStorage.setItem('_show_user_session_id',sessionID);
   }
 })
 

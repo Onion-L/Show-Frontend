@@ -30,8 +30,6 @@
   const handleLogout = () => {
     axios.get('/api/logout').then((response)=>{
       console.log(response.data);
-      localStorage.removeItem('log_in_username');
-      localStorage.removeItem('login_token');
       showSuccessToast('退出登录成功');
       router.replace('/login');
     })

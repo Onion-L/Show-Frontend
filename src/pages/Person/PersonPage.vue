@@ -20,22 +20,19 @@ import axios from "axios";
 
 const store = userStore();
 const user = ref({});
-const username = localStorage.getItem('log_in_username');
-const token = localStorage.getItem('login_token');
+const username = localStorage.getItem('_show_user_session_id');
 
 
 onMounted(()=>{
   console.log('person',username);
-  axios.get('/api/user',{
-    headers: {
-      Authorization: 'Bearer ' + token
-    }
-  }).then(response => {
-    console.log(response.data);
-    user.value = response.data;
-  }).catch(e => {
-    console.error(e)
-  })
+  axios.get('/api/user')
+      .then(response => {
+        console.log(response.data);
+        user.value = response.data;
+      })
+      .catch(e => {
+        console.error(e)
+      })
 
   user.value = store.userList;
 })

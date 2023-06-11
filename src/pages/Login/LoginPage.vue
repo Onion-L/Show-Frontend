@@ -49,14 +49,13 @@ const avatarUrl = ref('');
 const router = useRouter();
 
 onMounted(() => {
-  axios.get('/api/user')
+/*  axios.get('/api/user')
       .then(response => {
         console.log(response.data)
       })
       .catch((_) => {
         console.error('头像加载失败');
-      })
-
+      })*/
 })
 
 const onSubmit = (values) => {
@@ -65,9 +64,8 @@ const onSubmit = (values) => {
 
   axios.post('/api/login',values)
       .then((response)=>{
-        console.log('数据成功传输~~~',typeof values)
+        console.log('数据成功传输~~~',response.data)
         console.log(response.data);
-        localStorage.setItem('login_token',response.data);
         router.replace('/home').then(() => {
               showSuccessToast('登录成功');
             })
