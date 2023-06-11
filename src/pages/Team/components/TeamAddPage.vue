@@ -118,7 +118,7 @@ const onSubmit = (values) => {
 
 @font-face{
   font-family: 'Pacifico';
-  src:local('Pacifico'),url("src/assets/font/Pacifico-Regular.ttf") format('truetype');
+  src:local('Pacifico'),url("Pacifico-Regular.ttf") format('truetype');
 }
 
 .nav-title{
