@@ -12,14 +12,24 @@
 </template>
 
 <script setup>
-  import {teamStore} from "../../store/modules/teamStore.js";
-  import {useRoute, useRouter} from "vue-router";
-  import TeamCard from "../../components/TeamCard.vue";
 
-  const store = teamStore();
-  const team = store.teamList;
-  const route = useRoute();
-  const router = useRouter();
+import {teamStore} from "../../store/modules/teamStore.js";
+import {useRoute, useRouter} from "vue-router";
+import {onMounted, ref} from "vue";
+import TeamCard from "../../components/TeamCard.vue";
+
+const store = teamStore();
+const team = ref([]);
+const route = useRoute();
+const router = useRouter();
+
+
+onMounted(async ()=>{
+  console.log(store.teamList);
+  team.value = store.teamList;
+  console.log('team1',store.teamList[0].name);
+})
+
 
   const onClickLeft = () => {
     router.back();
@@ -34,7 +44,7 @@
 }
 
 .nav-title{
-  font-family: 'Pacifico';
+  font-family: 'Pacifico',serif;
   color: #1989FA;
 }
 </style>
