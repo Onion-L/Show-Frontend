@@ -30,13 +30,12 @@ import axios from "axios";
 const active = ref(0);
 const router = useRouter();
 const route = useRoute();
-const sessionID = document.cookie.split('=')[1];
+const sessionID = document.cookie.split('=')[1];//获取cookie
+const store = userStore();
 
 
 onMounted(()=>{
- /* axios.get('/api/home').then(response => {
-    console.log(response);
-  })*/
+  console.log('@@@',store.userData);
   if(sessionID) {
     localStorage.setItem('_show_user_session_id',sessionID);
   }

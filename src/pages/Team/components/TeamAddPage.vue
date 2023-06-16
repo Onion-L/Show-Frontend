@@ -98,7 +98,6 @@ const onClickLeft = () => {
 const onSubmit = (values) => {
   values.username = localStorage.getItem('log_in_username');
 
-
   axios.post('/api/addTeam',values)
       .then((_) => {
         showSuccessToast('队伍创建成功');
@@ -118,7 +117,7 @@ const onSubmit = (values) => {
 
 @font-face{
   font-family: 'Pacifico';
-  src:local('Pacifico'),url("Pacifico-Regular.ttf") format('truetype');
+  src:local('Pacifico'),url("src/assets/font/Pacifico-Regular.ttf") format('truetype');
 }
 
 .nav-title{

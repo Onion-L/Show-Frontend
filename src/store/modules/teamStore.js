@@ -1,5 +1,4 @@
 import {defineStore} from "pinia";
-import axios from "axios";
 
 export const teamStore = defineStore('team',{
     state:()=>{
@@ -8,13 +7,17 @@ export const teamStore = defineStore('team',{
         }
     },
     actions:{
-       /* async fetchTeamList() {
-            try {
-                const response = await axios.get('/api/teamList');
-                this.teamList = response.data.list;
-            }catch (err) {
-                console.error(err);
-            }
-        }*/
+       addTeamList(team) {
+
+       }
     },
+    persist:{
+        enable:true,
+        strategies:[
+            {
+                storage:localStorage,
+                path:['userData']
+            }
+        ]
+    }
 })

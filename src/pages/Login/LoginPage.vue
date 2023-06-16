@@ -1,13 +1,9 @@
 <template>
-  <van-nav-bar
-     title="登录"
-  />
+  <van-nav-bar title="登录"/>
   <h3 class="title">Welcome to your show~</h3>
-
-<!--  <img class="avatar" :src="avatarUrl"/>-->
-  <van-image :src="avatarUrl">
+<!--  <van-image :src="avatarUrl">
     <template v-slot:default>加载失败</template>
-  </van-image>
+  </van-image>-->
   <van-form @submit="onSubmit" style="margin-top: 50px;">
     <van-cell-group inset>
       <van-field
@@ -38,25 +34,19 @@
 </template>
 
 <script setup>
-import {onMounted, ref} from "vue";
+import {ref} from "vue";
 import {useRouter} from "vue-router";
 import axios from "axios";
 import {showFailToast, showSuccessToast} from "vant";
+import {userStore} from "../../store/modules/userStore.js";
+import {teamStore} from "../../store/modules/teamStore.js";
 
+const router = useRouter();
 const username = ref('');
 const password = ref('');
-const avatarUrl = ref('');
-const router = useRouter();
 
-onMounted(() => {
-/*  axios.get('/api/user')
-      .then(response => {
-        console.log(response.data)
-      })
-      .catch((_) => {
-        console.error('头像加载失败');
-      })*/
-})
+const userStorage = userStore();
+const teamStorage = teamStore();
 
 const onSubmit = (values) => {
   console.log(typeof values)
@@ -65,7 +55,7 @@ const onSubmit = (values) => {
   axios.post('/api/login',values)
       .then((response)=>{
         console.log('数据成功传输~~~',response.data)
-        console.log(response.data);
+        userStorage.userData = response.data;
         router.replace('/home').then(() => {
               showSuccessToast('登录成功');
             })
@@ -74,6 +64,13 @@ const onSubmit = (values) => {
         // console.log('ERROR',e.message)
         showFailToast('用户名/密码错误');
       })
+
+  axios.get('/api/team')
+      .then(response => {
+        console.log(response.data);
+        teamStorage.teamList = response.data;
+      })
+
 };
 
 const onRegister = () => {

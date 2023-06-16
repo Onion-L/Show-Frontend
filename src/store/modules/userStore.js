@@ -1,25 +1,25 @@
 import {defineStore} from "pinia";
-import axios from "axios";
 
 export const userStore = defineStore('user',{
     state:()=>{
         return {
-            userList:{}
+            userData:{}
         }
     },
-    actions:{
-        /*async fetchUser(username) {
-            try {
-                const response = await axios.get('/api/user',username,{
-                    headers: {
-                        Authorization: 'Bearer ' + token
-                    }
-                });
-                this.userList = response.data;
-            }catch (err) {
-                console.error(err);
+    actions: {
+        setUserData(userData) {
+             localStorage.setItem('user',userData);
+             this.userData = userData;
+        }
+    },
+    persist:{
+        enable:true,
+        strategies:[
+            {
+                storage:localStorage,
+                path:['userData']
             }
-        }*/
+        ]
     }
 })
 

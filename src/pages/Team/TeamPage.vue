@@ -24,8 +24,8 @@ import {teamStore} from "../../store/modules/teamStore.js";
 import {useRouter} from "vue-router";
 import axios from "axios";
 
-const teamList = ref([]);
 const store = teamStore();
+const {teamList} = store;
 const router = useRouter();
 
 onMounted(()=>{
@@ -35,7 +35,6 @@ onMounted(()=>{
       .then(response => {
         console.log(response.data);
         store.teamList = response.data;
-        teamList.value = response.data;
       })
 })
 
@@ -53,11 +52,9 @@ const addTeam = () => {
   router.push('/addTeam');
 }
 
-
 </script>
 
 <style scoped>
-
 .add-btn {
   position:fixed;
   bottom: 15vh;

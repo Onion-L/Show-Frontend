@@ -1,9 +1,9 @@
 <template>
   <div class="user-card">
-    <img :src="user.avatarUrl" style="width: 50vw; border-radius: 50%;display: inline-block">
+    <img class="user-avatar" :src="avatarUrl" alt="avatar">
     <div class="info-container">
-      <span class="username" style="font-size: 24px;">{{user.username}}</span>
-      <span class="account" style="font-size: 16px;">账号:{{user.userAccount}}</span>
+      <span class="username" style="font-size: 24px;">{{username}}</span>
+      <span class="account" style="font-size: 16px;">账号:{{userAccount}}</span>
     </div>
   </div>
   <div class="cell">
@@ -14,28 +14,10 @@
 </template>
 
 <script setup>
-import {onMounted, ref} from "vue";
 import {userStore} from "../../store/modules/userStore.js";
-import axios from "axios";
 
 const store = userStore();
-const user = ref({});
-const username = localStorage.getItem('_show_user_session_id');
-
-
-onMounted(()=>{
-  console.log('person',username);
-  axios.get('/api/user')
-      .then(response => {
-        console.log(response.data);
-        user.value = response.data;
-      })
-      .catch(e => {
-        console.error(e)
-      })
-
-  user.value = store.userList;
-})
+const {avatarUrl,username,userAccount} = store.userData;
 
 </script>
 
@@ -45,7 +27,12 @@ onMounted(()=>{
    height: 50vw;
    background-color:#fff;
    display: flex;
+ }
 
+ .user-avatar {
+   width: 50vw;
+   border-radius: 50%;
+   display: inline-block
  }
 
  .info-container{

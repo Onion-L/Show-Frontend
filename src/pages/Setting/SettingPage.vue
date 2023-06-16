@@ -29,6 +29,7 @@
 
   const handleLogout = () => {
     axios.get('/api/logout').then((response)=>{
+      localStorage.clear();
       console.log(response.data);
       showSuccessToast('退出登录成功');
       router.replace('/login');
