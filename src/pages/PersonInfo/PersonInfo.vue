@@ -4,15 +4,18 @@
       left-arrow
       @click-left="onClickLeft"
   />
-  <van-cell title="头像" size="larger">
-    <img style="height: 48px;" alt="头像" :src="user.avatarUrl">
-    <input class="avatar-upload"
-           type="file"
-           accept="image/*"
-           name="picture"
-           @change="uploadAvatar"
-    />
-  </van-cell>
+  <form enctype="multipart/form-data">
+    <van-cell title="头像" size="larger">
+      <img style="height: 48px;" alt="头像" :src="user.avatarUrl">
+      <input class="avatar-upload"
+             type="file"
+             accept="image/*"
+             name="picture"
+             @change="uploadAvatar"
+      />
+    </van-cell>
+  </form>
+
   <van-cell title="昵称" size="larger" is-link to="info/edit" :value="user.username" @click="toEdit('昵称','username',user.username)"/>
   <van-cell title="账号" size="larger" :value="user.userAccount" />
   <van-cell title="性别" size="larger" is-link to="info/edit" :value="user.gender" @click="toEdit('性别','gender',user.gender)"/>
@@ -25,7 +28,7 @@
 <script setup>
 
 import {userStore} from "../../store/modules/userStore.js";
-import {onMounted, ref} from "vue";
+import {onBeforeUnmount, onMounted, ref} from "vue";
 import {useRouter} from "vue-router";
 import axios from "axios";
 
@@ -33,20 +36,19 @@ const router = useRouter();
 const userStorage = userStore();
 const user = userStorage.userData;
 
-
 //修改头像
 const uploadAvatar = (event) => {
   let fileReader = new FileReader();
   const file = event.target.files[0];
   fileReader.readAsDataURL(file);
-  console.log(fileReader.result);
   fileReader.onload = (event => {
     user.avatarUrl = event.target.result;
   })
 }
 
-
 const onClickLeft = () => {
+  console.log(userStorage.userData);
+
   router.back();
 }
 
@@ -60,6 +62,7 @@ const toEdit = (key,value,currentValue) => {
     }
   })
 }
+
 
 </script>
 

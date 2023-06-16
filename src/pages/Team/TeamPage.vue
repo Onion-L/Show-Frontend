@@ -24,17 +24,15 @@ import {teamStore} from "../../store/modules/teamStore.js";
 import {useRouter} from "vue-router";
 import axios from "axios";
 
-const store = teamStore();
-const {teamList} = store;
+const teamStorage = teamStore();
+const {teamList} = teamStorage;
 const router = useRouter();
 
 onMounted(()=>{
-/*  await store.fetchTeamList();
-  teamList.value = store.teamList;*/
   axios.get('/api/team')
       .then(response => {
         console.log(response.data);
-        store.teamList = response.data;
+        teamStorage.teamList = response.data;
       })
 })
 

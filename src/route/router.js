@@ -1,7 +1,7 @@
 import * as VueRouter from "vue-router";
-import HomePage from '../pages/Home/HomePage.vue'
-import TeamPage from '../pages/Team/TeamPage.vue'
-import PersonPage from '../pages/Person/PersonPage.vue'
+import HomePage from '../pages/Home/HomePage.vue';
+import TeamPage from '../pages/Team/TeamPage.vue';
+import PersonPage from '../pages/Person/PersonPage.vue';
 import SearchPage from "../pages/Search/SearchPage.vue";
 import BasicLayout from "../Layout/BasicLayout.vue";
 import PersonInfo from "../pages/PersonInfo/PersonInfo.vue";
@@ -15,7 +15,6 @@ import TeamAddPage from "../pages/Team/components/TeamAddPage.vue";
 
 
 const routes = [
-
     {
         path:'/',
         component:BasicLayout,
@@ -32,7 +31,8 @@ const routes = [
                 path:'team',
                 component:TeamPage
             },
-        ]
+        ],
+
     },
     {
         path:'/addTeam',
@@ -75,5 +75,14 @@ const router = VueRouter.createRouter({
     // 内部提供了 history 模式的实现。为了简单起见，我们在这里使用 hash 模式。
     history: VueRouter.createWebHashHistory(),
     routes,
+});
+
+router.beforeEach((to, from, next) => {
+    if(!document.cookie && to.path !== '/login') {
+        next('/login');
+    }else {
+        next();
+    }
 })
+
 export default router;

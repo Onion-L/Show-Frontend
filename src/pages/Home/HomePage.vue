@@ -34,6 +34,7 @@ const sessionID = document.cookie.split('=')[1];//获取cookie
 const store = userStore();
 
 
+
 onMounted(()=>{
   console.log('@@@',store.userData);
   if(sessionID) {
