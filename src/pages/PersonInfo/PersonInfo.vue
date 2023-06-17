@@ -11,14 +11,13 @@
              type="file"
              accept="image/*"
              name="picture"
-             @change="uploadAvatar"
       />
     </van-cell>
   </form>
 
   <van-cell title="昵称" size="larger" is-link to="info/edit" :value="user.username" @click="toEdit('昵称','username',user.username)"/>
   <van-cell title="账号" size="larger" :value="user.userAccount" />
-  <van-cell title="性别" size="larger" is-link to="info/edit" :value="user.gender" @click="toEdit('性别','gender',user.gender)"/>
+<!--  <van-cell title="性别" size="larger" is-link to="info/edit" :value="user.gender" @click="toEdit('性别','gender',user.gender)"/>-->
   <van-cell title="电话" size="larger" is-link to="info/edit" :value="user.phone" @click="toEdit('电话','phone',user.phone)"/>
   <van-cell title="邮箱" size="larger" is-link to="info/edit" :value="user.email" @click="toEdit('邮箱','email',user.email)"/>
   <van-cell title="编号" size="larger"  :value="user.id" />
@@ -28,16 +27,16 @@
 <script setup>
 
 import {userStore} from "../../store/modules/userStore.js";
-import {onBeforeUnmount, onMounted, ref} from "vue";
 import {useRouter} from "vue-router";
-import axios from "axios";
 
 const router = useRouter();
 const userStorage = userStore();
 const user = userStorage.userData;
 
-//修改头像
-const uploadAvatar = (event) => {
+/**
+ * 修改头像 todo
+ */
+/*const uploadAvatar = (event) => {
   // let formData = new FormData();
   let fileReader = new FileReader();
   const file = event.target.files[0];
@@ -47,10 +46,10 @@ const uploadAvatar = (event) => {
     user.avatarUrl = event.target.result;
     // axios.post('/api/updateUser',event.target.result)
   })
- /* formData.append('avatar',file,);
+ formData.append('avatar',file,);
   console.log(formData.get('avatar'));
-  user.avatarUrl = formData.get('avatar');*/
-}
+  user.avatarUrl = formData.get('avatar');
+}*/
 
 const onClickLeft = () => {
   console.log(userStorage.userData);

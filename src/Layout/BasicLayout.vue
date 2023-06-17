@@ -20,9 +20,9 @@
         <van-tabbar-item name="person" icon="friends-o" to="/person">个人</van-tabbar-item>
       </van-tabbar>
     </div>
-    <div class="gender-card" style="background-color:#fff;width: 100vw;height:100vh;position:absolute;">
+<!--    <div class="gender-card" style="display:none;background-color:#fff;width: 100vw;height:100vh;position:absolute;">
 
-    </div>
+    </div>-->
 </template>
 <script setup>
 import { ref } from 'vue';

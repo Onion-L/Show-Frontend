@@ -20,9 +20,6 @@ import {onMounted} from "vue";
 const store = userStore();
 const {avatarUrl,username,userAccount} = store.userData;
 
-onMounted(()=>{
-  console.log(avatarUrl.toString());
-})
 </script>
 
 <style scoped>
