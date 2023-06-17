@@ -38,12 +38,18 @@ const user = userStorage.userData;
 
 //修改头像
 const uploadAvatar = (event) => {
+  // let formData = new FormData();
   let fileReader = new FileReader();
   const file = event.target.files[0];
-  fileReader.readAsDataURL(file);
+  console.log('file',file);
   fileReader.onload = (event => {
+    console.log('!!!',event.target.result)
     user.avatarUrl = event.target.result;
+    // axios.post('/api/updateUser',event.target.result)
   })
+ /* formData.append('avatar',file,);
+  console.log(formData.get('avatar'));
+  user.avatarUrl = formData.get('avatar');*/
 }
 
 const onClickLeft = () => {

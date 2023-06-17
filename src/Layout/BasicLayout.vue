@@ -7,7 +7,6 @@
         <template #title>
           <span class="nav-title">Show</span>
         </template>
-
         <template #right>
           <van-icon name="search" size="24" />
         </template>
@@ -20,6 +19,9 @@
         <van-tabbar-item name="team" icon="search" to="/team">组队</van-tabbar-item>
         <van-tabbar-item name="person" icon="friends-o" to="/person">个人</van-tabbar-item>
       </van-tabbar>
+    </div>
+    <div class="gender-card" style="background-color:#fff;width: 100vw;height:100vh;position:absolute;">
+
     </div>
 </template>
 <script setup>

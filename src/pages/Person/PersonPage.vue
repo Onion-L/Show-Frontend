@@ -15,10 +15,14 @@
 
 <script setup>
 import {userStore} from "../../store/modules/userStore.js";
+import {onMounted} from "vue";
 
 const store = userStore();
 const {avatarUrl,username,userAccount} = store.userData;
 
+onMounted(()=>{
+  console.log(avatarUrl.toString());
+})
 </script>
 
 <style scoped>
@@ -40,6 +44,6 @@ const {avatarUrl,username,userAccount} = store.userData;
    display: flex;
    flex-direction: column;
    justify-content: center;
+   padding-left: 30px;
  }
-
 </style>

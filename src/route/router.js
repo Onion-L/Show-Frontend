@@ -12,6 +12,7 @@ import RegisterPage from "../pages/Register/RegisterPage.vue";
 import TeamInfo from "../pages/TeamInfo/TeamInfo.vue";
 import ExceptionPage from "../pages/ExceptionPage/ExceptionPage.vue";
 import TeamAddPage from "../pages/Team/components/TeamAddPage.vue";
+import TestPage from "../pages/Test/TestPage.vue";
 
 
 const routes = [
@@ -66,9 +67,14 @@ const routes = [
     {
         path:'/teamInfo',
         component: TeamInfo
-    },{
+    },
+    {
         path:'/error',
         component:ExceptionPage
+    },
+    {
+        path:'/test',
+        component:TestPage
     }
 ];
 const router = VueRouter.createRouter({
@@ -77,12 +83,12 @@ const router = VueRouter.createRouter({
     routes,
 });
 
-router.beforeEach((to, from, next) => {
-    if(!document.cookie && to.path !== '/login') {
+/*router.beforeEach((to, from, next) => {
+    if((!document.cookie && to.path !== '/login') || from.path === '/login') {
         next('/login');
     }else {
         next();
     }
-})
+})*/
 
 export default router;
