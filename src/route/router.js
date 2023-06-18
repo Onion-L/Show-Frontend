@@ -13,6 +13,7 @@ import TeamInfo from "../pages/TeamInfo/TeamInfo.vue";
 import ExceptionPage from "../pages/ExceptionPage/ExceptionPage.vue";
 import TeamAddPage from "../pages/Team/components/TeamAddPage.vue";
 import TestPage from "../pages/Test/TestPage.vue";
+import EditGenderPage from "../pages/Edit/EditGenderPage.vue";
 
 
 const routes = [
@@ -59,6 +60,10 @@ const routes = [
     {
         path:'/info/edit',
         component: EditPage
+    },
+    {
+        path:'/gender',
+        component: EditGenderPage
     },
     {
         path:'/setting',

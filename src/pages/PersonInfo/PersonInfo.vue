@@ -6,7 +6,7 @@
   />
   <form enctype="multipart/form-data">
     <van-cell title="头像" size="larger">
-      <img style="height: 48px;" alt="头像" :src="user.avatarUrl">
+      <img style="height: 48px;" alt="头像" :src="avatarUrl">
       <input class="avatar-upload"
              type="file"
              accept="image/*"
@@ -15,13 +15,13 @@
     </van-cell>
   </form>
 
-  <van-cell title="昵称" size="larger" is-link to="info/edit" :value="user.username" @click="toEdit('昵称','username',user.username)"/>
-  <van-cell title="账号" size="larger" :value="user.userAccount" />
-<!--  <van-cell title="性别" size="larger" is-link to="info/edit" :value="user.gender" @click="toEdit('性别','gender',user.gender)"/>-->
-  <van-cell title="电话" size="larger" is-link to="info/edit" :value="user.phone" @click="toEdit('电话','phone',user.phone)"/>
-  <van-cell title="邮箱" size="larger" is-link to="info/edit" :value="user.email" @click="toEdit('邮箱','email',user.email)"/>
-  <van-cell title="编号" size="larger"  :value="user.id" />
-  <van-cell title="注册时间" size="larger"  :value="user.createdAt" />
+  <van-cell title="昵称" size="larger" is-link to="info/edit" :value="username" @click="toEdit('昵称','username',username)"/>
+  <van-cell title="账号" size="larger" :value="userAccount" />
+  <van-cell title="性别" size="larger" is-link to="gender" :value="genderList[gender]" @click="toEditGender('性别','gender',gender)"/>
+  <van-cell title="电话" size="larger" is-link to="info/edit" :value="phone" @click="toEdit('电话','phone',phone)"/>
+  <van-cell title="邮箱" size="larger" is-link to="info/edit" :value="email" @click="toEdit('邮箱','email',email)"/>
+  <van-cell title="编号" size="larger"  :value="id" />
+  <van-cell title="注册时间" size="larger"  :value="createdAt" />
 </template>
 
 <script setup>
@@ -31,7 +31,8 @@ import {useRouter} from "vue-router";
 
 const router = useRouter();
 const userStorage = userStore();
-const user = userStorage.userData;
+const {avatarUrl,username,userAccount,phone,email,id,createdAt,gender} = userStorage.userData;
+const genderList = ['未设置','男','女'];
 
 /**
  * 修改头像 todo
@@ -52,14 +53,23 @@ const user = userStorage.userData;
 }*/
 
 const onClickLeft = () => {
-  console.log(userStorage.userData);
-
   router.back();
 }
 
 const toEdit = (key,value,currentValue) => {
   router.push ({
     path:'info/edit',
+    query:{
+      key,
+      value,
+      currentValue
+    }
+  })
+}
+
+const toEditGender = (key,value,currentValue) => {
+  router.push({
+    path:'/gender',
     query:{
       key,
       value,
