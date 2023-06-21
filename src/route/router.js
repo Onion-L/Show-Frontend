@@ -14,6 +14,7 @@ import ExceptionPage from "../pages/ExceptionPage/ExceptionPage.vue";
 import TeamAddPage from "../pages/Team/components/TeamAddPage.vue";
 import TestPage from "../pages/Test/TestPage.vue";
 import EditGenderPage from "../pages/Edit/EditGenderPage.vue";
+import MyTeamPage from "../pages/Myteam/MyTeamPage.vue";
 
 
 const routes = [
@@ -72,6 +73,10 @@ const routes = [
     {
         path:'/teamInfo',
         component: TeamInfo
+    },
+    {
+        path:'/myTeam',
+        component: MyTeamPage
     },
     {
         path:'/error',

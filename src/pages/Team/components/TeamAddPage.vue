@@ -73,11 +73,12 @@
 <script setup>
 
 import {useRouter} from "vue-router";
-import {ref} from "vue";
+import {onMounted, ref} from "vue";
 import axios from "axios";
 import {showFailToast, showSuccessToast} from "vant";
 
 const router = useRouter();
+const user = localStorage.getItem('user');
 
 const name = ref('');
 const description = ref('');
@@ -91,12 +92,16 @@ const onConfirm = (date) => {
   showCalendar.value = false;
 };
 
+onMounted(()=>{
+  console.log('!!!!',JSON.parse(user).userData.id);
+})
+
 const onClickLeft = () => {
   router.back();
 }
 
 const onSubmit = (values) => {
-  values.username = localStorage.getItem('log_in_username');
+  values.userId = JSON.parse(user).userData.id;
 
   axios.post('/api/addTeam',values)
       .then((_) => {

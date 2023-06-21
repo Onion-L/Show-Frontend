@@ -67,7 +67,7 @@ const onSubmit = (values) => {
 
   axios.get('/api/team')
       .then(response => {
-        console.log(response.data);
+        console.log('team',response.data);
         teamStorage.teamList = response.data;
       })
 

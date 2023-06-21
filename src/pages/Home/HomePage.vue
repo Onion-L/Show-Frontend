@@ -26,17 +26,19 @@ import { onMounted, ref} from "vue";
 import {useRoute, useRouter} from "vue-router";
 import {userStore} from "../../store/modules/userStore.js";
 import axios from "axios";
+import {teamStore} from "../../store/modules/teamStore.js";
 
 const active = ref(0);
 const router = useRouter();
 const route = useRoute();
 const sessionID = document.cookie.split('=')[1];//获取cookie
-const store = userStore();
-
+const userStorage = userStore();
+const team = teamStore();
 
 
 onMounted(()=>{
-  console.log('@@@',store.userData);
+  console.log('@@@',userStorage.userData);
+  console.log('teamList',team.teamList);
   if(sessionID) {
     localStorage.setItem('_show_user_session_id',sessionID);
   }

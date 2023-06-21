@@ -57,35 +57,35 @@ import {useRouter} from "vue-router";
     })
   }
 
-const tagList = ref([]);
+// const tagList = ref([]);
+//
+//   onMounted(()=>{
+//     axios.get('/tagList')
+//         .then(response=>{
+//           console.log(response.data)
+//           tagList.value = response.data;
+//         })
+//   })
 
-  onMounted(()=>{
-    axios.get('/tagList')
-        .then(response=>{
-          console.log(response.data)
-          tagList.value = response.data;
-        })
-  })
 
-
-// const tagList = [
-//   {
-//     text: '后端开发',
-//     children: [
-//       { text: 'Java', id: 'Java' },
-//       { text: 'Python', id: 'Python' },
-//       { text: 'Go', id: 'Go' },
-//     ],
-//   },
-//   {
-//     text: '前端开发',
-//     children: [
-//       { text: 'JavaScript', id: 'JavaScript' },
-//       { text: 'Vue', id: 'Vue' },
-//       { text: 'React', id: 'React' },
-//     ],
-//   },
-//   { text: '人工智能',
-//   children: []},
-// ];
+const tagList = [
+  {
+    text: '后端开发',
+    children: [
+      { text: 'Java', id: 'Java' },
+      { text: 'Python', id: 'Python' },
+      { text: 'Go', id: 'Go' },
+    ],
+  },
+  {
+    text: '前端开发',
+    children: [
+      { text: 'JavaScript', id: 'JavaScript' },
+      { text: 'Vue', id: 'Vue' },
+      { text: 'React', id: 'React' },
+    ],
+  },
+  { text: '人工智能',
+  children: []},
+];
 </script>

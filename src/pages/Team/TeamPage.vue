@@ -5,7 +5,7 @@
         :key="index"
         :desc="team.description"
         :title="team.name"
-        :thumb="team.avatarUrl"
+        thumb="https://c-ssl.duitang.com/uploads/item/201810/18/20181018162952_qhgsh.jpeg"
         style=" background-color: #fff; "
         @click="handleOnClick(index)"
     >
@@ -28,13 +28,13 @@ const teamStorage = teamStore();
 const {teamList} = teamStorage;
 const router = useRouter();
 
-onMounted(()=>{
-  axios.get('/api/team')
-      .then(response => {
-        console.log(response.data);
-        teamStorage.teamList = response.data;
-      })
-})
+// onMounted(()=>{
+//   axios.get('/api/team')
+//       .then(response => {
+//         console.log(response.data);
+//         teamStorage.teamList = response.data;
+//       })
+// })
 
 const handleOnClick = (index)=>{
   console.log(index);

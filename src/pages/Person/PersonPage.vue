@@ -8,7 +8,7 @@
   </div>
   <div class="cell">
   <van-cell title="个人信息" is-link to="info"/>
-  <van-cell title="我的队伍" is-link />
+  <van-cell title="我的队伍" is-link to="myTeam"/>
   <van-cell title="设置" is-link to="setting"/>
   </div>
 </template>

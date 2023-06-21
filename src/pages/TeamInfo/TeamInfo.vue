@@ -8,7 +8,8 @@
       <span class="nav-title">Show</span>
     </template>
   </van-nav-bar>
-  <team-card style="margin-top: 54px"/>
+
+  <team-card :index="index" style="margin-top: 54px"/>
 </template>
 
 <script setup>
@@ -23,6 +24,7 @@ const team = ref([]);
 const route = useRoute();
 const router = useRouter();
 
+const {index} = route.query;
 
 onMounted(async ()=>{
   console.log(store.teamList);
