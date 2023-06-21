@@ -15,7 +15,7 @@
     </van-cell>
   </form>
 
-  <van-cell title="昵称" size="larger" is-link to="info/edit" :value="username" @click="toEdit('昵称','username',username)"/>
+  <van-cell title="用户名" size="larger" is-link to="info/edit" :value="username" @click="toEdit('用户名','username',username)"/>
   <van-cell title="账号" size="larger" :value="userAccount" />
   <van-cell title="性别" size="larger" is-link to="gender" :value="genderList[gender]" @click="toEditGender('性别','gender',gender)"/>
   <van-cell title="电话" size="larger" is-link to="info/edit" :value="phone" @click="toEdit('电话','phone',phone)"/>
@@ -32,7 +32,7 @@ import {useRouter} from "vue-router";
 const router = useRouter();
 const userStorage = userStore();
 const {avatarUrl,username,userAccount,phone,email,id,createdAt,gender} = userStorage.userData;
-const genderList = ['未设置','男','女'];
+const genderList = ['未设置','男','女','保密'];
 
 /**
  * 修改头像 todo

@@ -44,13 +44,18 @@ const saveInfo = () => {
     showFailToast(`请输入${editUser.key}`)
   }else {
     axios.post('/api/updateUser',{
-      [editUser.value]:newInfo.value
+      key:editUser.value,
+      newValue:newInfo.value,
+      oldValue:editUser.currentValue
+    }).then(_=>{
+      console.log('success');
+    }).catch((err) => {
+      console.error(err.message);
+      // showFailToast(`${editUser.key}已存在`)
     })
     // userStorage[value] = newInfo.value;
   }
- /* axios.post('/api/updateUser',{
-    [value.key] : newInfo.value
-  })*/
+
 }
 </script>
 

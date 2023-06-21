@@ -11,10 +11,11 @@ import LoginPage from "../pages/Login/LoginPage.vue";
 import RegisterPage from "../pages/Register/RegisterPage.vue";
 import TeamInfo from "../pages/TeamInfo/TeamInfo.vue";
 import ExceptionPage from "../pages/ExceptionPage/ExceptionPage.vue";
-import TeamAddPage from "../pages/Team/components/TeamAddPage.vue";
+import TeamAddPage from "../pages/Team/TeamAddPage.vue";
 import TestPage from "../pages/Test/TestPage.vue";
 import EditGenderPage from "../pages/Edit/EditGenderPage.vue";
 import MyTeamPage from "../pages/Myteam/MyTeamPage.vue";
+import EditMyTeamPage from "../pages/Myteam/EditMyTeamPage.vue";
 
 
 const routes = [
@@ -77,6 +78,10 @@ const routes = [
     {
         path:'/myTeam',
         component: MyTeamPage
+    },
+    {
+        path:'/editMyTeam',
+        component: EditMyTeamPage
     },
     {
         path:'/error',

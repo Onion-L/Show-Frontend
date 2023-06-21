@@ -11,16 +11,14 @@
       :title="team.name"
       thumb="https://c-ssl.duitang.com/uploads/item/201810/18/20181018162952_qhgsh.jpeg"
       style=" background-color: #fff; "
-      @click="handleOnClick(index)"
   >
     <template #footer>
-      <van-button size="mini">编辑</van-button>
+      <van-button class="edit-btn" size="normal" type="primary" @click="toEdit">编辑</van-button>
     </template>
   </van-card>
 </template>
 
 <script setup>
-
 import {useRouter} from "vue-router";
 import {userStore} from "../../store/modules/userStore.js";
 import {teamStore} from "../../store/modules/teamStore.js";
@@ -34,11 +32,21 @@ const teamList = teamStorage.teamList;
 
 const myTeam = teamList.filter((team)=> team.userId === id);
 
+const toEdit = () => {
+  router.push({
+    path:'/editMyTeam'
+  })
+}
 const onClickLeft = ()=>{
   router.back();
 }
+
 </script>
 
 <style scoped>
-
+.edit-btn {
+  padding: 0 10px;
+  font-size: 12px;
+  height:30px;
+}
 </style>
