@@ -1,9 +1,7 @@
 <template>
   <van-nav-bar title="登录"/>
   <h3 class="title">Welcome to your show~</h3>
-<!--  <van-image :src="avatarUrl">
-    <template v-slot:default>加载失败</template>
-  </van-image>-->
+
   <van-form @submit="onSubmit" style="margin-top: 50px;">
     <van-cell-group inset>
       <van-field
@@ -60,8 +58,7 @@ const onSubmit = (values) => {
               showSuccessToast('登录成功');
             })
       })
-      .catch(e => {
-        // console.log('ERROR',e.message)
+      .catch(_ => {
         showFailToast('用户名/密码错误');
       })
 
@@ -93,7 +90,7 @@ const onRegister = () => {
 }
 
 .title{
-  font-family: 'Pacifico';
+  font-family: 'Pacifico',sans-serif;
   color: #1989FA;
   text-align: center;
 }

@@ -1,22 +1,22 @@
 import {defineStore} from "pinia";
 
 export const teamStore = defineStore('team',{
-    state:()=>{
-        return {
-            teamList:[]
-        }
-    },
-    actions:{
-       addTeamList(team) {
+    state:()=> ({
+            teamList: []
+    }),
 
-       }
+    actions:{
+      addTeamList() {
+
+      }
+
     },
     persist:{
         enable:true,
         strategies:[
             {
                 storage:localStorage,
-                path:['userData']
+                path:['teamList']
             }
         ]
     }

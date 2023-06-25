@@ -76,6 +76,7 @@ import {useRouter} from "vue-router";
 import {onMounted, ref} from "vue";
 import axios from "axios";
 import {showFailToast, showSuccessToast} from "vant";
+import {teamStore} from "../../store/modules/teamStore.js";
 
 const router = useRouter();
 const user = localStorage.getItem('user');
@@ -87,6 +88,10 @@ const checked = ref('0');
 
 const expireTime = ref('');
 const showCalendar = ref(false);
+
+const teamStorage = teamStore();
+const {teamList} = teamStorage;
+
 const onConfirm = (date) => {
   expireTime.value = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
   showCalendar.value = false;
@@ -103,8 +108,10 @@ const onClickLeft = () => {
 const onSubmit = (values) => {
   values.userId = JSON.parse(user).userData.id;
 
+  console.log(values);
   axios.post('/api/addTeam',values)
       .then((_) => {
+        teamList.push(values);
         showSuccessToast('队伍创建成功');
         router.replace('/team');
       })

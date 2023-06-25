@@ -11,7 +11,7 @@
 
 <script setup>
 
-import {onMounted, ref} from "vue";
+import {ref} from "vue";
 import {useRoute} from "vue-router";
 import router from "../../route/router.js";
 import {userStore} from "../../store/modules/userStore.js";
@@ -21,6 +21,7 @@ import {showFailToast} from "vant";
 const newInfo = ref();
 const route = useRoute();
 const userStorage = userStore();
+const {userData} = userStorage;
 
 const editUser = {
   key:route.query.key,
@@ -29,9 +30,6 @@ const editUser = {
 };
 
 
-onMounted(()=>{
-  console.log('type',typeof route.query.currentValue)
-})
 const onClickLeft = ()=>{
   router.back();
 };
@@ -49,6 +47,8 @@ const saveInfo = () => {
       oldValue:editUser.currentValue
     }).then(_=>{
       console.log('success');
+      userData[editUser.value] = newInfo.value;
+      router.replace('/info');
     }).catch((err) => {
       console.error(err.message);
       // showFailToast(`${editUser.key}已存在`)

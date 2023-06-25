@@ -30,6 +30,7 @@ import {ref} from "vue";
 import {useRoute, useRouter} from "vue-router";
 import {showFailToast} from "vant";
 import axios from "axios";
+import {userStore} from "../../store/modules/userStore.js";
 
 const router = useRouter();
 const route = useRoute();
@@ -39,6 +40,9 @@ const editUser = {
   value:route.query.value,
   currentValue:route.query.currentValue
 };
+
+const userStorage = userStore();
+const {userData} = userStorage;
 
 const checked = ref(editUser.currentValue);
 
@@ -62,6 +66,8 @@ const saveInfo = () => {
       oldValue: editUser.currentValue
     }).then(_ => {
       console.log('success');
+      userData.gender = Number(checked.value);
+      router.replace('/info');
     })
   }
 }

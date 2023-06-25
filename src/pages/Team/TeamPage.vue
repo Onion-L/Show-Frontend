@@ -28,14 +28,6 @@ const teamStorage = teamStore();
 const {teamList} = teamStorage;
 const router = useRouter();
 
-// onMounted(()=>{
-//   axios.get('/api/team')
-//       .then(response => {
-//         console.log(response.data);
-//         teamStorage.teamList = response.data;
-//       })
-// })
-
 const handleOnClick = (index)=>{
   console.log(index);
   router.push({
